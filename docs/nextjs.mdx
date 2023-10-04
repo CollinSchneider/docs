@@ -1,0 +1,154 @@
+---
+title: 'Next.js'
+description: 'Installing Swishjam to your Next.js app'
+icon: 'code'
+---
+
+### Install 
+from root of your Next.js app run the following on your command line 
+<CodeGroup>
+```shell npm 
+npm install @swishjam/react
+```
+```shell yarn 
+yarn add @swishjam/react
+```
+```shell pnpm 
+pnpm add @swishjam/react
+```
+</CodeGroup>
+
+### Import into your App 
+in your _app.js or top level layout import and setup Swishjam 
+```javascript _app.js 
+import { SwishjamProvider } from '@swishjam/react';
+
+export default function App({ Component, pageProps }) {
+
+    return (
+        <SwishjamProvider apiKey='swishjam-XXXXX'>
+            <Component {...pageProps} />
+        </SwishjamProvider>
+    )
+} 
+```
+
+Get your api key from the <a target="_blank" href="https://app.swishjam.com/settings">Swishjam settings</a>. We have multiple API keys to separate data from your various sites & apps. We automatically create 2 keys for "marketing" and "product" for you to use.
+
+### Triggering Events 
+Page views happen automatically so there's no need to trigger those, but if you'd like track specific events like a user successfully completing an action you can do the following
+
+- import Swishjam into your component
+- trigger your event 
+
+```javascript YourComponent.js
+import { swishjam } from '@swishjam/react';
+
+export default function YourComponent({}) {
+
+    const clickHandler = (e) => {
+        swishjam.event('event name', {
+            ...include your data here
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Click This Button
+        </button>        
+    )
+}
+```
+
+We also have the ability to useHooks within the react ecosystem
+
+```javascript YourComponent.js
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent({}) {
+    const swishjam = useSwishjam();
+
+    const clickHandler = (e) => {
+        swishjam.event('event name', {
+            ...include your data here
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Click This Button
+        </button>        
+    )
+}
+```
+
+### Identifying Users
+  
+If your users login and you would like to identify their activity in Swishjam you can use the .indentify function 
+
+- import Swishjam into your component
+- identify your user 
+
+```javascript YourComponent.js
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent({}) {
+
+    const clickHandler = (e) => {
+        swishjam.identify('user@example.com', {
+            ...include your data here
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Login
+        </button>        
+    )
+}
+```
+
+We also have the ability to useHooks within the react ecosystem
+
+```javascript YourComponent.js
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent({}) {
+    const swishjam = useSwishjam();
+
+    const clickHandler = (e) => {
+        swishjam.event('event name', {
+            ...include your data here
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Click This Button
+        </button>        
+    )
+}
+```
+
+### Deep dive on the SDK 
+
+<CardGroup cols={3}>
+  <Card
+    title="Triggering Events"
+    icon="square-js"
+    href="/docs/nextjs"
+  >
+  </Card>
+  <Card
+    title="Identifying Users"
+    icon="square-js"
+    href="/docs/reactjs"
+  >
+  </Card>
+  <Card
+    title="Connecting Users To Orgs"
+    icon="square-js"
+    href="/docs/vanillajs"
+  >
+  </Card>
+</CardGroup>
