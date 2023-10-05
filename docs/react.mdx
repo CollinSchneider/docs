@@ -1,11 +1,11 @@
 ---
-title: 'Next.js'
-description: 'Installing Swishjam to your Next.js app'
+title: 'React'
+description: 'Installing Swishjam to your React app'
 icon: 'code'
 ---
 
-### Install 
-from root of your Next.js app run the following on your command line 
+### 1. Install 
+from root of your React app run the following on your command line 
 <CodeGroup>
 ```shell npm 
 npm install @swishjam/react
@@ -18,8 +18,8 @@ pnpm add @swishjam/react
 ```
 </CodeGroup>
 
-### Import into your App 
-in your _app.js or top level layout import and setup Swishjam 
+### 2. Import into your App 
+in your _app.js or top level layout import and setup Swishjam with your API key 
 ```javascript _app.js 
 import { SwishjamProvider } from '@swishjam/react';
 
@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }) {
 
 Get your api key from the <a target="_blank" href="https://app.swishjam.com/settings">Swishjam settings</a>. We have multiple API keys to separate data from your various sites & apps. We automatically create 2 keys for "marketing" and "product" for you to use.
 
-### Triggering Events 
+### 3. Triggering Events 
 Page views happen automatically so there's no need to trigger those, but if you'd like track specific events like a user successfully completing an action you can do the following
 
 - import Swishjam into your component
@@ -82,7 +82,7 @@ export default function YourComponent({}) {
 }
 ```
 
-### Identifying Users
+### 4. Identifying Users
   
 If your users login and you would like to identify their activity in Swishjam you can use the .indentify function 
 
@@ -130,25 +130,94 @@ export default function YourComponent({}) {
 }
 ```
 
-### Deep dive on the SDK 
+### 5. Grouping Users 
 
-<CardGroup cols={3}>
-  <Card
-    title="Triggering Events"
-    icon="square-js"
-    href="/docs/nextjs"
-  >
-  </Card>
-  <Card
-    title="Identifying Users"
-    icon="square-js"
-    href="/docs/reactjs"
-  >
-  </Card>
-  <Card
-    title="Connecting Users To Orgs"
-    icon="square-js"
-    href="/docs/vanillajs"
-  >
-  </Card>
-</CardGroup>
+In many SaaS tools users are part of a larger grouping like a business or entity. Use groupings to automatically aggregate user data to a group
+
+- import Swishjam into your component
+- group your user
+
+```javascript YourComponent.js
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent({}) {
+
+    const clickHandler = (e) => {
+        swishjam.setOrganization('organizationIdentifier', {
+            ...include your data here
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Login
+        </button>        
+    )
+}
+```
+
+We also have the ability to useHooks within the react ecosystem
+
+```javascript YourComponent.js
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent({}) {
+    const swishjam = useSwishjam();
+
+    const clickHandler = (e) => {
+        swishjam.setOrganization('organizationIdentifier', {
+            ...include your data here
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Click This Button
+        </button>        
+    )
+}
+```
+
+### 6. Logging out a users
+
+When your users log out you can trigger our log out which will help reset the device identifier. We'll disassociate all future events from the currently identified user
+
+- import Swishjam into your component
+- logout your user
+
+```javascript YourComponent.js
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent({}) {
+
+    const clickHandler = (e) => {
+        swishjam.logout()
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Logout
+        </button>        
+    )
+}
+```
+
+We also have the ability to useHooks within the react ecosystem
+
+```javascript YourComponent.js
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent({}) {
+    const swishjam = useSwishjam();
+
+    const clickHandler = (e) => {
+        swishjam.logout()
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Click This Button
+        </button>
+    )
+}
+```

@@ -41,8 +41,8 @@
       "pages": ["introduction"]
     },
     {
-      "group": "Quickstart",
-      "pages": ["docs/nextjs", "docs/reactjs", "docs/vanillajs"]
+      "group": "Guides",
+      "pages": ["docs/react", "docs/javascript"]
     }
   ],
   "footerSocials": {
