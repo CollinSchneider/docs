@@ -1,0 +1,80 @@
+---
+title: 'Identify Users'
+description: 'Trigger Swishjam user identification in your React app'
+icon: 'user'
+---
+
+If your users login and you would like to identify their activity in Swishjam you can use the .indentify function 
+
+<Steps>
+    <Step title="Import Swishjam into your component">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        import { swishjam } from '@swishjam/react';
+        ```
+        ```javascript React Hooks useSwishjam 
+        import { useSwishjam } from '@swishjam/react';
+        ```
+        </CodeGroup> 
+    </Step>
+    <Step title="Identify your users">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        swishjam.identify('user@example.com', {
+            ...include your data here
+        })
+        ```
+        ```javascript React Hooks useSwishjam 
+        // Setup at top of component   
+        const swishjam = useSwishjam();
+
+        // Identify 
+        swishjam.identify('user@example.com', {
+            ...include your data here
+        })
+        ```
+        </CodeGroup> 
+
+    </Step>
+</Steps> 
+
+### Full Example Code
+<CodeGroup>
+```javascript Standard Swishjam Import 
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent({}) {
+
+    const clickHandler = (e) => {
+        swishjam.identify('user@example.com', {
+            ...include your data here
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Login
+        </button>        
+    )
+}
+```
+```javascript React Hooks useSwishjam 
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent({}) {
+    const swishjam = useSwishjam();
+
+    const clickHandler = (e) => {
+        swishjam.identify('user@example.com', {
+            ...include your data here
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Click This Button
+        </button>        
+    )
+}
+```
+</CodeGroup>

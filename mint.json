@@ -37,17 +37,22 @@
   ],
   "navigation": [
     {
-      "group": "Documentation",
-      "pages": ["introduction"]
-    },
-    {
-      "group": "Guides",
-      "pages": ["docs/react", "docs/javascript"]
+      "group": "Quickstart",
+      "pages": [
+          {
+              "group": "React",
+              "pages": ["docs/react/quickstart", "docs/react/provider", "docs/react/events", "docs/react/identify", "docs/react/group", "docs/react/logout"]
+          },
+          {
+              "group": "Vanilla Javascript",
+              "pages": ["docs/javascript/quickstart"]
+          }
+      ]
     }
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/swishjam",
-    "github": "https://github.com/swishjamc"
+    "github": "https://github.com/swishjam/swishjam"
   },
   "modeToggle": {
     "default": "light"
