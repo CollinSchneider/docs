@@ -24,11 +24,10 @@ The Swishjam provider is applied at the _app, or _layout file for Next.js apps a
 
 ```javascript
 <SwishjamProvider
-    apiKey='Swishjam-xxxxx'
+    apiKey='swishjam-xxxxx'
     apiEndpoint={defaults to 'https://api2.swishjam.com/api/v1/capture'}
     maxEventsInMemory={defaults to 20}
     reportingHeartbeatMs={defaults to 10_000}
-    debug={true or false, defaults to false}
     disabled={true or false, defaults to false}
     disabledUrls={defaults to ['http://localhost']}    
 >
@@ -48,9 +47,6 @@ The Swishjam provider is applied at the _app, or _layout file for Next.js apps a
 </ParamField>
 <ParamField path="reportingHeartbeatMs" type="number" default="10_000">
     Frequency we attempt to report data to the capture endpoint
-</ParamField>
-<ParamField path="debug" type="boolean" default="false">
-    Turns debug mode on for more detailed logging
 </ParamField>
 <ParamField path="disabled" type="boolean" default="false">
     Disabled sending of events to the capture endpoint for testing and various non-production environments
