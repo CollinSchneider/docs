@@ -8,31 +8,29 @@ The Swishjam provider is applied at the _app, or _layout file for Next.js apps a
 
 ### Basic Example
 ```javascript _app.js 
-    import { SwishjamProvider } from '@swishjam/react';
+import { SwishjamProvider } from '@swishjam/react';
 
-    export default function app({ component, pageProps }) {
-
-        return (
-            <SwishjamProvider apikey='Swishjam-xxxxx'>
-                <component {...pageProps} />
-            </SwishjamProvider>
-        )
-    }
+export default function app({ component, pageProps }) {
+  return (
+    <SwishjamProvider apikey='Swishjam-xxxxx'>
+      <component {...pageProps} />
+    </SwishjamProvider>
+  )
+}
 ```
 
 ### Full Provider Options
 
 ```javascript
 <SwishjamProvider
-    apiKey='Swishjam-xxxxx'
-    apiEndpoint={defaults to 'https://api2.swishjam.com/api/v1/capture'}
-    maxEventsInMemory={defaults to 20}
-    reportingHeartbeatMs={defaults to 10_000}
-    debug={true or false, defaults to false}
-    disabled={true or false, defaults to false}
-    disabledUrls={defaults to ['http://localhost']}    
+  apiKey='swishjam-xxxxx'
+  apiEndpoint={defaults to 'https://api2.swishjam.com/api/v1/capture'}
+  maxEventsInMemory={defaults to 20}
+  reportingHeartbeatMs={defaults to 10_000}
+  disabled={true or false, defaults to false}
+  disabledUrls={defaults to ['http://localhost']}    
 >
-    <YourComponent />
+  <YourAppComponent />
 </SwishjamProvider>
 ```
 
@@ -43,16 +41,13 @@ The Swishjam provider is applied at the _app, or _layout file for Next.js apps a
 <ParamField path="apiEndpoint" type="string" default="https://api2.swishjam.com/api/v1/capture">
     URL for the data capture endpoint. Defaults to Swishjam's cloud solution 
 </ParamField>
-<ParamField path="maxEventsInMemory" type="number" default="20">
+<ParamField path="maxEventsInMemory" type="number" default={20}>
     Determines how many user events we hold in memory before sending them to the data capture endpoint. We also try to dump the data on page leave
 </ParamField>
-<ParamField path="reportingHeartbeatMs" type="number" default="10_000">
+<ParamField path="reportingHeartbeatMs" type="number" default={10000}>
     Frequency we attempt to report data to the capture endpoint
 </ParamField>
-<ParamField path="debug" type="boolean" default="false">
-    Turns debug mode on for more detailed logging
-</ParamField>
-<ParamField path="disabled" type="boolean" default="false">
+<ParamField path="disabled" type="boolean" default={false}>
     Disabled sending of events to the capture endpoint for testing and various non-production environments
 </ParamField>
 <ParamField path="disabledUrls" type="array" default="['http://localhost']">

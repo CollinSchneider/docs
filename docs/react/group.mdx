@@ -12,38 +12,39 @@ If users are part of a larger grouping like a business or entity you can use gro
 ```javascript Standard Swishjam Import
 import { swishjam } from '@swishjam/core';
 
-export default function YourComponent({}) {
+export default function YourComponent() {
+  const clickHandler = () => {
+    swishjam.setOrganization('your-unique-organization-identifier', {
+      name: 'Google',
+      // other attributes
+    })
+  }
 
-    const clickHandler = (e) => {
-        swishjam.setOrganization('organizationIdentifier', {
-            ...include your data here
-        })
-    }
-
-    return (
-        <button onClick={(e) => clickHandler(e)}>
-            Login
-        </button>        
-    )
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Login
+    </button>
+  )
 }
 ```
 ```javascript React Hooks useSwishjam 
 import { useSwishjam } from '@swishjam/react';
 
-export default function YourComponent({}) {
-    const swishjam = useSwishjam();
+export default function YourComponent() {
+  const swishjam = useSwishjam();
 
-    const clickHandler = (e) => {
-        swishjam.setOrganization('organizationIdentifier', {
-            ...include your data here
-        })
-    }
+  const clickHandler = () => {
+    swishjam.setOrganization('your-unique-organization-identifier', {
+      name: 'Google',
+      // other attributes
+    })
+  }
 
-    return (
-        <button onClick={(e) => clickHandler(e)}>
-            Click This Button
-        </button>        
-    )
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Click This Button
+    </button>      
+  )
 }
 ```
 </CodeGroup>

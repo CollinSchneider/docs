@@ -14,33 +14,32 @@ When your users log out you can trigger our log out which will help reset the de
 import { swishjam } from '@swishjam/core';
 
 export default function YourComponent({}) {
+  const logUserOut = () => {
+    swishjam.logout()
+  }
 
-    const clickHandler = (e) => {
-        swishjam.logout()
-    }
-
-    return (
-        <button onClick={(e) => clickHandler(e)}>
-            Logout
-        </button>        
-    )
+  return (
+    <button onClick={(e) => logUserOut()}>
+      Logout
+    </button>
+  )
 }
 ```
 ```javascript React Hooks useSwishjam
 import { useSwishjam } from '@swishjam/react';
 
 export default function YourComponent({}) {
-    const swishjam = useSwishjam();
+  const swishjam = useSwishjam();
 
-    const clickHandler = (e) => {
-        swishjam.logout()
-    }
+  const logUserOut = () => {
+    swishjam.logout()
+  }
 
-    return (
-        <button onClick={(e) => clickHandler(e)}>
-            Click This Button
-        </button>
-    )
+  return (
+    <button onClick={() => logUserOut()}>
+      Logout
+    </button>
+  )
 }
 ```
 </CodeGroup>
