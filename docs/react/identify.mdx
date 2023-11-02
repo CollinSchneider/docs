@@ -20,8 +20,10 @@ If your users login and you would like to identify their activity in Swishjam yo
     <Step title="Identify your users">
         <CodeGroup>
         ```javascript Simple Swishjam Import 
-        swishjam.identify('user@example.com', {
-            ...include your data here
+        swishjam.identify('your-unique-user-identifier', {
+          firstName: 'john',
+          lastName: 'doe',
+          // more attributes
         })
         ```
         ```javascript React Hooks useSwishjam 
@@ -29,8 +31,10 @@ If your users login and you would like to identify their activity in Swishjam yo
         const swishjam = useSwishjam();
 
         // Identify 
-        swishjam.identify('user@example.com', {
-            ...include your data here
+        swishjam.identify('your-unique-user-identifier', {
+          firstName: 'john',
+          lastName: 'doe',
+          // more attributes
         })
         ```
         </CodeGroup> 
@@ -43,38 +47,43 @@ If your users login and you would like to identify their activity in Swishjam yo
 ```javascript Standard Swishjam Import 
 import { swishjam } from '@swishjam/core';
 
-export default function YourComponent({}) {
+export default function YourComponent() {
+  const logUserIn = () => {
+    // your login logic
+    swishjam.identify('your-unique-user-identifier', {
+      firstName: 'john',
+      lastName: 'doe',
+      // more attributes
+    })
+  }
 
-    const clickHandler = (e) => {
-        swishjam.identify('user@example.com', {
-            ...include your data here
-        })
-    }
-
-    return (
-        <button onClick={(e) => clickHandler(e)}>
-            Login
-        </button>        
-    )
+  return (
+    <button onClick={(e) => logUserIn()}>
+      Login
+    </button>        
+  )
 }
 ```
 ```javascript React Hooks useSwishjam 
 import { useSwishjam } from '@swishjam/react';
 
-export default function YourComponent({}) {
-    const swishjam = useSwishjam();
+export default function YourComponent() {
+  const swishjam = useSwishjam();
 
-    const clickHandler = (e) => {
-        swishjam.identify('user@example.com', {
-            ...include your data here
-        })
-    }
+  const logUserIn = () => {
+    // your login logic
+    swishjam.identify('your-unique-user-identifier', {
+      firstName: 'john',
+      lastName: 'doe',
+      // more attributes
+    })
+  }
 
-    return (
-        <button onClick={(e) => clickHandler(e)}>
-            Click This Button
-        </button>        
-    )
+  return (
+    <button onClick={() => logUserIn()}>
+      Click This Button
+    </button>        
+  )
 }
 ```
 </CodeGroup>

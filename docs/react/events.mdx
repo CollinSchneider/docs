@@ -20,18 +20,20 @@ icon: 'star'
     <Step title="Trigger your event">
         <CodeGroup>
         ```javascript Simple Swishjam Import 
-            swishjam.event('event name', {
-                ...include your data here
-            })
+        swishjam.event('your event name', {
+          someProperty: 'your property value'
+          // more event properties
+        })
         ```
         ```javascript React Hooks useSwishjam 
-            // Setup at top of component   
-            const swishjam = useSwishjam();
+        // Setup at top of component   
+        const swishjam = useSwishjam();
 
-            // triggered by your event 
-            swishjam.event('event name', {
-                ...include your data here
-            })
+        // triggered by your event 
+        swishjam.event('your event name', {
+          someProperty: 'your property value'
+          // more event properties
+        })
         ```
         </CodeGroup> 
 
@@ -42,38 +44,39 @@ icon: 'star'
 ```javascript Simple Swishjam Import 
 import { swishjam } from '@swishjam/react';
 
-export default function YourComponent({}) {
+export default function YourComponent() {
+  const clickHandler = () => {
+    swishjam.event('an important button click', {
+      foo: 'bar'
+      // more properties
+    })
+  }
 
-    const clickHandler = (e) => {
-        swishjam.event('event name', {
-            ...include your data here
-        })
-    }
-
-    return (
-        <button onClick={(e) => clickHandler(e)}>
-            Click This Button
-        </button>        
-    )
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Click This Button
+    </button>
+  )
 }
 ```
 ```javascript React Hooks useSwishjam 
 import { useSwishjam } from '@swishjam/react';
 
 export default function YourComponent({}) {
-    const swishjam = useSwishjam();
+  const swishjam = useSwishjam();
 
-    const clickHandler = (e) => {
-        swishjam.event('event name', {
-            ...include your data here
-        })
-    }
+  const clickHandler = () => {
+    swishjam.event('an important button click', {
+      foo: 'bar'
+      // more properties
+    })
+  }
 
-    return (
-        <button onClick={(e) => clickHandler(e)}>
-            Click This Button
-        </button>        
-    )
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Click This Button
+    </button>        
+  )
 }
 ```
 </CodeGroup> 
