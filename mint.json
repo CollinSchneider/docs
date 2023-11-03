@@ -40,7 +40,7 @@
       "group": "Quickstart",
       "pages": [
         {
-          "group": "FOO!",
+          "group": "React",
           "pages": [
             "docs/react/some-bad-page",
             "docs/react/quickstart",
