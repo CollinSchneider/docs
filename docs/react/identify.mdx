@@ -23,6 +23,7 @@ If your users login and you would like to identify their activity in Swishjam yo
         swishjam.identify('your-unique-user-identifier', {
           firstName: 'john',
           lastName: 'doe',
+          email: 'john.doe@example.com',
           // more attributes
         })
         ```
@@ -34,6 +35,7 @@ If your users login and you would like to identify their activity in Swishjam yo
         swishjam.identify('your-unique-user-identifier', {
           firstName: 'john',
           lastName: 'doe',
+          email: 'john.doe@example.com',
           // more attributes
         })
         ```
@@ -45,7 +47,7 @@ If your users login and you would like to identify their activity in Swishjam yo
 ### Full Example Code
 <CodeGroup>
 ```javascript Standard Swishjam Import 
-import { swishjam } from '@swishjam/core';
+import { swishjam } from '@swishjam/react';
 
 export default function YourComponent() {
   const logUserIn = () => {
@@ -53,6 +55,7 @@ export default function YourComponent() {
     swishjam.identify('your-unique-user-identifier', {
       firstName: 'john',
       lastName: 'doe',
+      email: 'john.doe@example.com',
       // more attributes
     })
   }
@@ -75,6 +78,7 @@ export default function YourComponent() {
     swishjam.identify('your-unique-user-identifier', {
       firstName: 'john',
       lastName: 'doe',
+      email: 'john.doe@example.com',
       // more attributes
     })
   }
