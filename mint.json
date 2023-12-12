@@ -66,5 +66,8 @@
   },
   "modeToggle": {
     "default": "light"
+  },
+  "analytics": {
+    "gtm": "GTM-5LZGJRM9"
   }
 }
