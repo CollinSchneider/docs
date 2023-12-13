@@ -68,7 +68,7 @@
     "default": "light"
   },
   "analytics": {
-    "gtm": {
+    "gtm":{
       "tagId": "GTM-5LZGJRM9"
     }
   }
