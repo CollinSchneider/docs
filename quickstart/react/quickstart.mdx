@@ -1,0 +1,303 @@
+---
+title: 'Quickstart'
+description: 'Get Swishjam setup on your react app'
+icon: 'bolt'
+---
+
+## 1. Installation 
+From root of your React app run the following on your command line 
+<CodeGroup>
+```shell npm 
+npm install @swishjam/react
+```
+```shell yarn 
+yarn add @swishjam/react
+```
+```shell pnpm 
+pnpm add @swishjam/react
+```
+</CodeGroup>
+
+## 2. Setup
+<Steps>
+  <Step title="Get API Key">
+    Get your API key from the <a target="_blank" href="https://app.swishjam.com/settings">Swishjam settings</a>
+
+    <Info>Swishjam supports multiple API keys for each of your data sources in order to segment your data when necessary. A "marketing" and "product" are automatically created to support your marketing site and your product's application..</Info>
+  </Step> 
+  <Step title="Edit Top Level Components">
+    in your _app.js or top level layout import and setup Swishjam with your API key 
+    ```javascript _app.js 
+    import { SwishjamProvider } from '@swishjam/react';
+
+    export default function App({ Component, pageProps }) {
+
+      return (
+        <SwishjamProvider apiKey='swishjam-XXXXX'>
+          <Component {...pageProps} />
+        </SwishjamProvider>
+      )
+    }
+    ```
+    <Note>See full options for <a href="#">Swishjam Provider</a></Note>
+  </Step> 
+  <Step title="Replace API Key">
+    Replace `swishjam-XXXXX` with your API key from your settings
+  </Step> 
+</Steps> 
+
+## 3. Triggering Events
+<br />
+<Tip>Page views happen automatically! If you'd like track specific events like a user successfully completing an action you can do the following</Tip>
+<Steps>
+    <Step title="Import Swishjam into your component">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        import { swishjam } from '@swishjam/react';
+        ```
+        ```javascript React Hooks useSwishjam 
+        import { useSwishjam } from '@swishjam/react';
+        ```
+        </CodeGroup> 
+    </Step>
+    <Step title="Trigger your event">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+          swishjam.event('event name', {
+            key: "value"
+            // as many more properties as you'd like
+          })
+        ```
+        ```javascript React Hooks useSwishjam 
+        // Setup at top of component   
+        const swishjam = useSwishjam();
+
+        // triggered by your event 
+        swishjam.event('event name', {
+          key: "value"
+          // as many more properties as you'd like
+        })
+        ```
+        </CodeGroup> 
+
+    </Step>
+</Steps> 
+### Full Example Code
+<CodeGroup>
+```javascript Simple Swishjam Import 
+import { swishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const clickHandler = (e) => {
+    swishjam.event('an important button was clicked', {
+      key: "value"
+      // as many more properties as you'd like
+    })
+  }
+
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Click This Button
+    </button>
+  )
+}
+```
+```javascript React Hooks useSwishjam 
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+    const swishjam = useSwishjam();
+
+    const clickHandler = (e) => {
+        swishjam.event('an important button was clicked', {
+            key: "value"
+            // as many more properties as you'd like
+        })
+    }
+
+    return (
+        <button onClick={(e) => clickHandler(e)}>
+            Click This Button
+        </button>        
+    )
+}
+```
+</CodeGroup> 
+
+
+## 4. Identifying Users
+
+If your users login and you would like to identify their activity in Swishjam you can use the .indentify function 
+
+<Steps>
+    <Step title="Import Swishjam into your component">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        import { swishjam } from '@swishjam/react';
+        ```
+        ```javascript React Hooks useSwishjam 
+        import { useSwishjam } from '@swishjam/react';
+        ```
+        </CodeGroup> 
+    </Step>
+    <Step title="Identify your users">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        swishjam.identify('your-unique-user-identifier', {
+          firstName: "john",
+          lastName: "doe",
+          // as many more attributes as you'd like
+        })
+        ```
+        ```javascript React Hooks useSwishjam 
+        // Setup at top of component   
+        const swishjam = useSwishjam();
+
+        // Identify 
+        swishjam.identify('your-unique-user-identifier', {
+          firstName: "john",
+          lastName: "doe",
+          // as many more attributes as you'd like
+        })
+        ```
+        </CodeGroup> 
+
+    </Step>
+</Steps> 
+
+### Full Example Code
+<CodeGroup>
+```javascript Standard Swishjam Import 
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent() {
+  const logUserIn = () => {
+    // your login logic
+    swishjam.identify('your-unique-user-identifier', {
+      firstName: "john",
+      lastName: "doe",
+      // as many more attributes as you'd like
+    })
+  }
+
+  return (
+    <button onClick={() => logUserIn()}>
+      Login
+    </button>
+  )
+}
+```
+```javascript React Hooks useSwishjam 
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const swishjam = useSwishjam();
+
+  const logUserIn = () => {
+    // your login logic
+    swishjam.identify('your-unique-user-identifier', {
+      firstName: "john",
+      lastName: "doe",
+      // as many more attributes as you'd like
+    })
+  }
+  return (
+    <button onClick={() => logUserIn()}>
+      Click This Button
+    </button>
+  )
+}
+```
+</CodeGroup>
+
+## 5. Grouping Users 
+
+If users are part of a larger grouping like a business or entity you can use groupings to automatically aggregate user data
+
+- import Swishjam into your component
+- group your user
+
+<CodeGroup>
+```javascript Standard Swishjam Import
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent() {
+  const clickHandler = () => {
+    swishjam.setOrganization('your-unique-organization-identifier', {
+      name: "Google"
+      // as many more attributes as you'd like
+    })
+  }
+
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Login
+    </button>        
+  )
+}
+```
+```javascript React Hooks useSwishjam 
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const swishjam = useSwishjam();
+
+  const clickHandler = () => {
+    swishjam.setOrganization('your-unique-organization-identifier', {
+      name: "Google"
+      // as many more attributes as you'd like
+    })
+  }
+
+  return (
+    <button onClick={() => clickHandler()}>
+      Click This Button
+    </button>        
+  )
+}
+```
+</CodeGroup>
+
+## 6. Logging out a user
+
+When your users log out you can trigger our log out which will reset the device identifier. We'll disassociate all future events from the currently identified user.
+
+- import Swishjam into your component
+- logout your user
+
+<CodeGroup>
+```javascript Standard Swishjam Import 
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent() {
+  const logUserOut = () => {
+    // your logout logic
+    swishjam.logout()
+  }
+
+  return (
+    <button onClick={() => logUserOut()}>
+      Logout
+    </button>        
+  )
+}
+```
+```javascript React Hooks useSwishjam
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const swishjam = useSwishjam();
+
+  const logUserOut = () => {
+    // your logout logic
+    swishjam.logout()
+  }
+
+  return (
+    <button onClick={() => logUserOut()}>
+      Click This Button
+    </button>
+  )
+}
+```
+</CodeGroup>

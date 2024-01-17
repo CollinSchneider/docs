@@ -1,0 +1,82 @@
+---
+title: 'Triggering Events'
+description: 'Trigger Swishjam events in your React app'
+icon: 'star'
+---
+<Tip>Page views happen automatically! If you'd like track specific events like a user successfully completing an action you can do the following</Tip>
+
+## How To Trigger Events
+<Steps>
+    <Step title="Import Swishjam into your component">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        import { swishjam } from '@swishjam/react';
+        ```
+        ```javascript React Hooks useSwishjam 
+        import { useSwishjam } from '@swishjam/react';
+        ```
+        </CodeGroup> 
+    </Step>
+    <Step title="Trigger your event">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        swishjam.event('your event name', {
+          someProperty: 'your property value'
+          // more event properties
+        })
+        ```
+        ```javascript React Hooks useSwishjam 
+        // Setup at top of component   
+        const swishjam = useSwishjam();
+
+        // triggered by your event 
+        swishjam.event('your event name', {
+          someProperty: 'your property value'
+          // more event properties
+        })
+        ```
+        </CodeGroup> 
+
+    </Step>
+</Steps> 
+### Full Example Code
+<CodeGroup>
+```javascript Simple Swishjam Import 
+import { swishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const clickHandler = () => {
+    swishjam.event('an important button click', {
+      foo: 'bar'
+      // more properties
+    })
+  }
+
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Click This Button
+    </button>
+  )
+}
+```
+```javascript React Hooks useSwishjam 
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent({}) {
+  const swishjam = useSwishjam();
+
+  const clickHandler = () => {
+    swishjam.event('an important button click', {
+      foo: 'bar'
+      // more properties
+    })
+  }
+
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Click This Button
+    </button>        
+  )
+}
+```
+</CodeGroup> 

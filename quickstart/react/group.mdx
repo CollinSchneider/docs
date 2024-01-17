@@ -1,0 +1,50 @@
+---
+title: 'Group Users'
+description: 'Trigger Swishjam user grouping in your React app'
+icon: 'users'
+---
+If users are part of a larger grouping like a business or entity you can use groupings to automatically aggregate user data
+
+- import Swishjam into your component
+- group your user
+
+<CodeGroup>
+```javascript Standard Swishjam Import
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent() {
+  const clickHandler = () => {
+    swishjam.setOrganization('your-unique-organization-identifier', {
+      name: 'Google',
+      // other attributes
+    })
+  }
+
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Login
+    </button>
+  )
+}
+```
+```javascript React Hooks useSwishjam 
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const swishjam = useSwishjam();
+
+  const clickHandler = () => {
+    swishjam.setOrganization('your-unique-organization-identifier', {
+      name: 'Google',
+      // other attributes
+    })
+  }
+
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Click This Button
+    </button>      
+  )
+}
+```
+</CodeGroup>

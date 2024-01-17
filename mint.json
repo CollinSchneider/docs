@@ -39,24 +39,15 @@
     {
       "group": "Quickstart",
       "pages": [
-        {
-          "group": "React",
-          "pages": [
-            "docs/react/some-bad-page",
-            "docs/react/quickstart",
-            "docs/react/provider",
-            "docs/react/events",
-            "docs/react/identify",
-            "docs/react/group",
-            "docs/react/logout"
-          ]
-        },
-        {
-          "group": "Vanilla Javascript",
-          "pages": [
-            "docs/javascript/quickstart"
-          ]
-        }
+        "quickstart/install",
+        "quickstart/tracking-events"
+      ]
+    },
+    {
+      "group": "SDKs",
+      "pages": [
+        "quickstart/install",
+        "quickstart/tracking-events"
       ]
     }
   ],

@@ -1,0 +1,93 @@
+---
+title: 'Identify Users'
+description: 'Trigger Swishjam user identification in your React app'
+icon: 'user'
+---
+
+If your users login and you would like to identify their activity in Swishjam you can use the .indentify function 
+
+<Steps>
+    <Step title="Import Swishjam into your component">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        import { swishjam } from '@swishjam/react';
+        ```
+        ```javascript React Hooks useSwishjam 
+        import { useSwishjam } from '@swishjam/react';
+        ```
+        </CodeGroup> 
+    </Step>
+    <Step title="Identify your users">
+        <CodeGroup>
+        ```javascript Simple Swishjam Import 
+        swishjam.identify('your-unique-user-identifier', {
+          firstName: 'john',
+          lastName: 'doe',
+          email: 'john.doe@example.com',
+          // more attributes
+        })
+        ```
+        ```javascript React Hooks useSwishjam 
+        // Setup at top of component   
+        const swishjam = useSwishjam();
+
+        // Identify 
+        swishjam.identify('your-unique-user-identifier', {
+          firstName: 'john',
+          lastName: 'doe',
+          email: 'john.doe@example.com',
+          // more attributes
+        })
+        ```
+        </CodeGroup> 
+
+    </Step>
+</Steps> 
+
+### Full Example Code
+<CodeGroup>
+```javascript Standard Swishjam Import 
+import { swishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const logUserIn = () => {
+    // your login logic
+    swishjam.identify('your-unique-user-identifier', {
+      firstName: 'john',
+      lastName: 'doe',
+      email: 'john.doe@example.com',
+      // more attributes
+    })
+  }
+
+  return (
+    <button onClick={(e) => logUserIn()}>
+      Login
+    </button>        
+  )
+}
+```
+```javascript React Hooks useSwishjam 
+import { useSwishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const swishjam = useSwishjam();
+
+  const logUserIn = () => {
+    // your login logic
+    swishjam.identify('your-unique-user-identifier', {
+      firstName: 'john',
+      lastName: 'doe',
+      email: 'john.doe@example.com',
+      // more attributes
+    })
+  }
+
+  return (
+    <button onClick={() => logUserIn()}>
+      Click This Button
+    </button>        
+  )
+}
+```
+</CodeGroup>
