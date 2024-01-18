@@ -67,6 +67,12 @@
             "sdk/browser/group",
             "sdk/browser/logout"
           ]
+        },  
+        {
+          "group": "HTTP",
+          "pages": [
+            "sdk/http/events"
+          ]
         }  
       ]
     }
