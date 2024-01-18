@@ -1,0 +1,38 @@
+### Track events
+
+<Tip>Page views happen automatically! If you'd like track specific events like a user successfully completing an action you can do the following</Tip>
+
+#### Import Swishjam into your component
+
+```javascript 
+import { swishjam } from '@swishjam/react';
+```
+
+#### Track an Event 
+
+```javascript
+swishjam.event('event name', {
+    ...include your data here
+})
+```
+
+#### Full Code Example 
+        
+```javascript
+import { swishjam } from '@swishjam/react';
+
+export default function YourComponent({}) {
+
+  const clickHandler = (e) => {
+      swishjam.event('event name', {
+          ...include your data here
+      })
+  }
+
+  return (
+      <button onClick={(e) => clickHandler(e)}>
+          Click This Button
+      </button>        
+  )
+}
+```

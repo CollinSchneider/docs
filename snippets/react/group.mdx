@@ -1,0 +1,34 @@
+#### Group Users
+
+If users are part of a larger grouping like a business or entity you can use groupings to automatically aggregate user data
+
+#### Import Swishjam into your component
+```javascript
+import { swishjam } from '@swishjam/core';
+```
+
+#### Group Users 
+```javascript
+swishjam.setOrganization('your-unique-organization-identifier', {
+  name: 'Google',
+  // other attributes
+})
+```
+
+#### Full Example 
+```javascript
+export default function YourComponent() {
+  const clickHandler = () => {
+    swishjam.setOrganization('your-unique-organization-identifier', {
+      name: 'Google',
+      // other attributes
+    })
+  }
+
+  return (
+    <button onClick={(e) => clickHandler(e)}>
+      Login
+    </button>
+  )
+}
+```

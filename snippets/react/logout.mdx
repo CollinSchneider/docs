@@ -1,0 +1,30 @@
+#### Logout 
+
+When your users logout you can trigger a Swsihjam logout which will help reset the device identifier. We'll disassociate all future events from the currently identified user
+
+#### Import Swishjam into your component
+```javascript
+import { swishjam } from '@swishjam/core';
+```
+
+#### Logout User 
+```javascript
+swishjam.logout()
+```
+
+#### Full Example 
+```javascript Standard Swishjam Import 
+import { swishjam } from '@swishjam/core';
+
+export default function YourComponent({}) {
+  const logUserOut = () => {
+    swishjam.logout()
+  }
+
+  return (
+    <button onClick={(e) => logUserOut()}>
+      Logout
+    </button>
+  )
+}
+```

@@ -40,14 +40,34 @@
       "group": "Quickstart",
       "pages": [
         "quickstart/install",
-        "quickstart/tracking-events"
+        "quickstart/identify",
+        "quickstart/tracking-events",
+        "quickstart/group"
       ]
     },
     {
       "group": "SDKs",
       "pages": [
-        "quickstart/install",
-        "quickstart/tracking-events"
+        {
+          "group": "React",
+          "pages": [
+            "sdk/react/install",
+            "sdk/react/identify",
+            "sdk/react/events",
+            "sdk/react/group",
+            "sdk/react/logout"
+          ]
+        },  
+        {
+          "group": "Browser",
+          "pages": [
+            "sdk/browser/install",
+            "sdk/browser/identify",
+            "sdk/browser/events",
+            "sdk/browser/group",
+            "sdk/browser/logout"
+          ]
+        }  
       ]
     }
   ],

@@ -1,0 +1,41 @@
+#### Import Swishjam into your component
+        
+```javascript
+import { swishjam } from '@swishjam/react';
+```
+
+#### Identify your users
+```javascript Simple Swishjam Import 
+swishjam.identify('your-unique-user-identifier', {
+  firstName: 'john',
+  lastName: 'doe',
+  email: 'john.doe@example.com',
+  // more attributes
+})
+```
+
+<Tip>Once a user is identified we will track events triggered during the same session to that user</Tip>
+
+#### Full Example Code
+
+```javascript Standard Swishjam Import 
+import { swishjam } from '@swishjam/react';
+
+export default function YourComponent() {
+  const logUserIn = () => {
+    // your login logic
+    swishjam.identify('your-unique-user-identifier', {
+      firstName: 'john',
+      lastName: 'doe',
+      email: 'john.doe@example.com',
+      // more attributes
+    })
+  }
+
+  return (
+    <button onClick={(e) => logUserIn()}>
+      Login
+    </button>        
+  )
+}
+```
