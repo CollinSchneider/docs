@@ -1,3 +1,5 @@
+import UpdateAPIKey from '/snippets/updateApiKey.mdx'
+
 #### Install Swishjam
 
 Place the following javasript snippet in the footer of your website
@@ -13,22 +15,4 @@ Place the following javasript snippet in the footer of your website
 
 #### Update the API key in the javascript snippet above
 
-Replace `swishjam-XXXXXXXX` with your API Key located in your <a target="_blank" href="https://app.swishjam.com/settings">Swishjam settings</a>.
-    
-**Swishjam supports multiple API keys:**
-- Segment & combine data easier
-- Pre-built dashboards
-
-<Accordion title="Learn About Marketing vs Product API Key">
-Swishjam supports multiple API keys to help keep you data separated but easily connectable. We currently create 2 distinct API keys for you marketing and product keys. Below is more about each 
-<CardGroup cols={2}>
-    <Card title="Marketing API Key" icon="filter">
-        The marketing api key is meant for your landing pages, docs, blog, and other similar sites. The marketing dashboard will auto-populate with data regarding page views, browser types, etc on users that land on these pages.
-    </Card>
-    <Card title="Product API Key" icon="arrow-pointer">
-        The product api key is meant for your app. Since you've sparated marketing from product we're able to easily pre-build a product usage dashboard for your users.
-    </Card>
-</CardGroup>
-
-Both keys feature the same features in terms of tracking events and identifying users. The core difference is in utilizing the pre-build dashboards out of the box.
-</Accordion>  
+<UpdateAPIKey />
